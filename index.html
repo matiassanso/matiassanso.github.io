@@ -1,28 +1,262 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Sitio Web</title>
-  <style>
-    body { font-family: system-ui, sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #333; }
-    h1 { color: #111; }
-    a { color: #0366d6; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .card { background: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
-  </style>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Matías Sansó | Estudiante avanzado de Historia (UNSJ) | Investigación & Data Analytics aplicado | Geopolítica, Astropolítica, Recursos Estratégicos </title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ <style>
+ :root {
+ --bg: #090d16;
+ --card-bg: rgba(23, 32, 51, 0.7);
+ --card-hover: rgba(30, 41, 64, 0.9);
+ --border: #1e293b;
+ --border-accent: #334155;
+ --text: #e2e8f0;
+ --muted: #94a3b8;
+ --primary: #38bdf8;
+ --primary-dim: rgba(56, 189, 248, 0.12);
+ --accent: #818cf8;
+ --warn: #fbbf24;
+ --warn-dim: rgba(251, 191, 36, 0.12);
+ --card-radius: 12px;
+ }
+ * { box-sizing: border-box; margin: 0; padding: 0; }
+ html { scroll-behavior: smooth; }
+ body {
+ font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+ background-color: var(--bg);
+ color: var(--text);
+ line-height: 1.65;
+ padding-bottom: 60px;
+ }
+ .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+ nav {
+ position: sticky; top: 0;
+ backdrop-filter: blur(12px);
+ background: rgba(9, 13, 22, 0.85);
+ border-bottom: 1px solid var(--border);
+ z-index: 100;
+ }
+ .nav-container {
+ max-width: 860px; margin: 0 auto; padding: 16px 24px;
+ display: flex; justify-content: space-between; align-items: center;
+ }
+ .nav-brand { font-weight: 700; color: #ffffff; text-decoration: none; font-size: 1.05rem; letter-spacing: -0.02em; }
+ .nav-links { display: flex; gap: 20px; list-style: none; }
+ .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+ .nav-links a:hover { color: var(--primary); }
+ header {
+ padding: 60px 0 40px 0;
+ display: flex; gap: 36px; align-items: center;
+ border-bottom: 1px solid var(--border);
+ }
+ .profile-img {
+ width: 130px; height: 130px; border-radius: 50%; object-fit: cover;
+ border: 2px solid var(--primary);
+ box-shadow: 0 0 24px rgba(56, 189, 248, 0.2);
+ flex-shrink: 0;
+ }
+ .hero-content h1 { font-size: 2.1rem; color: #ffffff; font-weight: 700; line-height: 1.2; margin-bottom: 6px; }
+ .headline { font-size: 1rem; color: var(--primary); font-weight: 500; margin-bottom: 12px; }
+ .hero-text { color: var(--muted); font-size: 0.95rem; }
+ section { padding: 48px 0 16px 0; border-bottom: 1px solid var(--border); }
+ section:last-of-type { border-bottom: none; }
+ .section-title { font-size: 1.35rem; color: #ffffff; margin-bottom: 8px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+ .section-desc { color: var(--muted); font-size: 0.95rem; margin-bottom: 24px; }
+ .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+ .card {
+ background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--card-radius);
+ padding: 24px; transition: all 0.2s ease; text-decoration: none; display: block; color: inherit;
+ }
+ .card:hover { background: var(--card-hover); border-color: var(--border-accent); transform: translateY(-2px); }
+ .card-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; flex-wrap: wrap; gap: 6px; }
+ .card-title { font-size: 1.1rem; font-weight: 600; color: #ffffff; }
+ .card-meta { font-size: 0.8rem; color: var(--primary); font-weight: 500; }
+ .card-text { color: var(--muted); font-size: 0.92rem; margin-bottom: 14px; }
+ .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+ .tag { background: var(--primary-dim); color: var(--primary); font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 6px; }
+ .tag.status { background: var(--warn-dim); color: var(--warn); }
+ .timeline { display: flex; flex-direction: column; gap: 18px; }
+ .timeline-item { border-left: 2px solid var(--border-accent); padding-left: 18px; position: relative; }
+ .timeline-item::before {
+ content: ''; position: absolute; left: -6px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--primary);
+ }
+ .timeline-role { font-size: 1rem; font-weight: 600; color: #ffffff; }
+ .timeline-org { font-size: 0.88rem; color: var(--primary); margin-bottom: 4px; }
+ .timeline-status { font-size: 0.8rem; color: var(--warn); font-weight: 600; margin-bottom: 4px; }
+ .timeline-desc { font-size: 0.9rem; color: var(--muted); }
+ .substack-box {
+ background: linear-gradient(135deg, rgba(23, 32, 51, 0.9), rgba(15, 23, 42, 0.9));
+ border: 1px solid var(--primary-dim); border-left: 4px solid var(--primary);
+ border-radius: var(--card-radius); padding: 24px;
+ display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 24px;
+ }
+ .btn {
+ display: inline-block; background: var(--primary); color: #090d16; font-weight: 600; font-size: 0.88rem;
+ padding: 10px 18px; border-radius: 8px; text-decoration: none; white-space: nowrap; transition: opacity 0.2s;
+ }
+ .btn:hover { opacity: 0.9; }
+ .contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
+ .contact-btn {
+ display: inline-flex; align-items: center; gap: 8px; background: var(--card-bg); border: 1px solid var(--border);
+ color: var(--text); padding: 10px 16px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.2s;
+ }
+ .contact-btn:hover { border-color: var(--primary); color: var(--primary); }
+ footer { padding-top: 40px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+ @media (max-width: 640px) {
+ header { flex-direction: column; text-align: center; gap: 20px; }
+ .nav-links { display: none; }
+ .substack-box { flex-direction: column; align-items: flex-start; }
+ }
+ </style>
 </head>
 <body>
-  <h1>Hola, soy [Tu Nombre]</h1>
-  <p>Bienvenido a mi sitio personal. Aquí comparto mis proyectos e investigaciones.</p>
-  
-  <h2>Proyectos</h2>
-  <div class="card">
-    <h3>Nombre del Proyecto</h3>
-    <p>Breve descripción de lo que trata este proyecto.</p>
-  </div>
+ <nav>
+ <div class="nav-container">
+ <a href="#" class="nav-brand">Matías Sansó</a>
+ <ul class="nav-links">
+ <li><a href="#sobre-mi">Sobre mí</a></li>
+ <li><a href="#briefs">Briefs & Escritos</a></li>
+ <li><a href="#proyectos">Proyectos</a></li>
+ <li><a href="#cv">CV</a></li>
+ <li><a href="#contacto">Contacto</a></li>
+ </ul>
+ </div>
+ </nav>
 
-  <h2>Contacto</h2>
-  <p>Puedes encontrarme en <a href="https://linkedin.com">LinkedIn</a> o escribirme por correo.</p>
+ <div class="container">
+ <header id="sobre-mi">
+ <img src="foto.png" alt="Matías Sansó" class="profile-img" onerror="this.style.display='none'">
+ <div class="hero-content">
+ <h1>Matías Sansó</h1>
+ <div class="headline">Historia &bull; Análisis de Datos &bull; Investigación Estratégica</div>
+ <p class="hero-text">
+ Estudiante avanzado de Historia enfocado en la intersección entre narrativa histórica y rigor cuantitativo, con interés particular en recursos estratégicos, minería regional y geopolítica espacial.
+ </p>
+ </div>
+ </header>
+
+ <!-- Strategic Briefs y Substack -->
+ <section id="briefs">
+ <h2 class="section-title">Strategic Briefs & Ensayos</h2>
+ <p class="section-desc">Publicaciones y ensayos en preparación que integran fuentes históricas con análisis cuantitativo.</p>
+
+ <div class="substack-box">
+ <div>
+ <strong style="color: #ffffff; font-size: 1.05rem; display: block; margin-bottom: 4px;">Publicaciones en Substack</strong>
+ <p style="color: var(--muted); font-size: 0.9rem;">Análisis sobre economía regional, astropolítica y comercio internacional.</p>
+ </div>
+ <a href="https://substack.com" target="_blank" class="btn">Visitar Substack &rarr;</a>
+ </div>
+
+ <div class="grid">
+ <div class="card">
+ <div class="card-header">
+ <span class="card-title">Evolución del PBG en la Región de Cuyo</span>
+ <span class="card-meta">Brief Ejecutivo</span>
+ </div>
+ <p class="card-text">Análisis comparativo de series temporales del Producto Bruto Geográfico en la región de Cuyo, con foco en minería y comercio exterior.</p>
+ <div class="tags">
+ <span class="tag">Historia Económica</span>
+ <span class="tag">Series de Tiempo</span>
+ <span class="tag status">En preparación</span>
+ </div>
+ </div>
+ <div class="card">
+ <div class="card-header">
+ <span class="card-title">Minerales Críticos y Geopolítica Espacial</span>
+ <span class="card-meta">Ensayo</span>
+ </div>
+ <p class="card-text">Estudio sobre recursos estratégicos, marcos regulatorios y proyección de poder en la carrera espacial.</p>
+ <div class="tags">
+ <span class="tag">Astropolítica</span>
+ <span class="tag">Recursos Estratégicos</span>
+ <span class="tag status">En preparación</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- Proyectos y Dashboards -->
+ <section id="proyectos">
+ <h2 class="section-title">Proyectos & Dashboards</h2>
+ <p class="section-desc">Iniciativas aplicadas de inteligencia de mercado, visualización y ciencia de datos.</p>
+ <div class="grid">
+ <div class="card">
+ <div class="card-header">
+ <span class="card-title">Membrillo Analytics</span>
+ <span class="card-meta">Inteligencia de Mercado</span>
+ </div>
+ <p class="card-text">Iniciativa en desarrollo orientada a análisis territorial y generación de información estratégica para el sector productivo regional.</p>
+ <div class="tags">
+ <span class="tag">Business Intelligence</span>
+ <span class="tag">Estrategia</span>
+ <span class="tag status">En desarrollo</span>
+ </div>
+ </div>
+ <div class="card">
+ <div class="card-header">
+ <span class="card-title">Scraper & Análisis de Reputación Turística</span>
+ <span class="card-meta">Data Pipeline</span>
+ </div>
+ <p class="card-text">Extracción automatizada con Python de valoraciones y reseñas de bodegas locales para evaluar percepción y reputación online del sector.</p>
+ <div class="tags">
+ <span class="tag">Python</span>
+ <span class="tag">Data Analytics</span>
+ <span class="tag status">En refinamiento</span>
+ </div>
+ </div>
+ <div class="card">
+ <div class="card-header">
+ <span class="card-title">NASA Space Apps Challenge San Juan</span>
+ <span class="card-meta">Organización & Vinculación</span>
+ </div>
+ <p class="card-text">Participación como voluntario en la edición local del hackatón global de innovación y ciencia espacial de la NASA.</p>
+ <div class="tags">
+ <span class="tag">Innovación</span>
+ <span class="tag">Comunidad</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- CV y Formación -->
+ <section id="cv">
+ <h2 class="section-title">Trayectoria & Formación</h2>
+ <p class="section-desc">Formación académica de base, certificaciones analíticas y áreas metodológicas.</p>
+ <div class="timeline">
+ <div class="timeline-item">
+ <div class="timeline-role">Profesorado en Historia</div>
+ <div class="timeline-org">Universidad Nacional de San Juan (UNSJ)</div>
+ <div class="timeline-status">En curso · Egreso estimado diciembre 2026</div>
+ <p class="timeline-desc">Especialización en Historia Económica Regional, Historia Contemporánea y Relaciones Internacionales.</p>
+ </div>
+ <div class="timeline-item">
+ <div class="timeline-role">Certificación Profesional en Análisis de Datos</div>
+ <div class="timeline-org">Google / Coursera</div>
+ <p class="timeline-desc">Estadística descriptiva, SQL, hojas de cálculo avanzadas, limpieza de datos y visualización.</p>
+ </div>
+ </div>
+ </section>
+
+ <!-- Contacto -->
+ <section id="contacto">
+ <h2 class="section-title">Contacto & Redes</h2>
+ <p class="section-desc">Canales de vinculación profesional y repositorios de código abierto.</p>
+ <div class="contact-links">
+ <a href="https://linkedin.com" target="_blank" class="contact-btn">LinkedIn &rarr;</a>
+ <a href="https://github.com/matiassanso" target="_blank" class="contact-btn">GitHub &rarr;</a>
+ <a href="mailto:tu-email@gmail.com" class="contact-btn">Email &rarr;</a>
+ <a href="https://substack.com" target="_blank" class="contact-btn">Substack &rarr;</a>
+ </div>
+ </section>
+
+ <footer>
+ <p>&copy; 2026 Matías Sansó &bull; Observatorio Estratégico Personal</p>
+ </footer>
+ </div>
 </body>
 </html>
