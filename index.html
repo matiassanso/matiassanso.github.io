@@ -3,123 +3,386 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matías Sansó | Historia, Datos & Geopolítica</title>
+  <title>Matías Sansó | Historia, Data Analysis & Geopolítica</title>
+  
+  <!-- Tipografías: Playfair Display (Serif editorial) + Inter (Lectura limpia) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #090d16;
-      --card-bg: rgba(23, 32, 51, 0.7);
-      --card-hover: rgba(30, 41, 64, 0.9);
-      --border: #1e293b;
-      --border-accent: #334155;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --primary: #38bdf8;
-      --primary-dim: rgba(56, 189, 248, 0.12);
-      --accent: #818cf8;
-      --warn: #fbbf24;
-      --warn-dim: rgba(251, 191, 36, 0.12);
-      --card-radius: 12px;
+      --bg: #ffffff;
+      --surface: #fafafa;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --text-subtle: #9ca3af;
+      --border: #e5e7eb;
+      --border-dark: #111827;
+      --accent: #111827;
+      --radius: 6px;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
       background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      padding-bottom: 60px;
+      color: var(--text-main);
+      line-height: 1.7;
+      font-size: 1rem;
+      padding-bottom: 80px;
+      -webkit-font-smoothing: antialiased;
     }
-    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navegación sutil */
     nav {
-      position: sticky; top: 0;
-      backdrop-filter: blur(12px);
-      background: rgba(9, 13, 22, 0.85);
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
       z-index: 100;
     }
+
     .nav-container {
-      max-width: 860px; margin: 0 auto; padding: 16px 24px;
-      display: flex; justify-content: space-between; align-items: center;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .nav-brand { font-weight: 700; color: #ffffff; text-decoration: none; font-size: 1.05rem; letter-spacing: -0.02em; }
-    .nav-links { display: flex; gap: 20px; list-style: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--primary); }
+
+    .nav-brand {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    /* Header / Hero */
     header {
-      padding: 60px 0 40px 0;
-      display: flex; gap: 36px; align-items: center;
+      padding: 70px 0 45px 0;
+      display: flex;
+      gap: 36px;
+      align-items: center;
       border-bottom: 1px solid var(--border);
     }
+
     .profile-img {
-      width: 130px; height: 130px; border-radius: 50%; object-fit: cover;
-      border: 2px solid var(--primary);
-      box-shadow: 0 0 24px rgba(56, 189, 248, 0.2);
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--border);
       flex-shrink: 0;
     }
-    .hero-content h1 { font-size: 2.1rem; color: #ffffff; font-weight: 700; line-height: 1.2; margin-bottom: 6px; }
-    .headline { font-size: 1rem; color: var(--primary); font-weight: 500; margin-bottom: 12px; }
-    .hero-text { color: var(--muted); font-size: 0.95rem; }
-    section { padding: 48px 0 16px 0; border-bottom: 1px solid var(--border); }
-    section:last-of-type { border-bottom: none; }
-    .section-title { font-size: 1.35rem; color: #ffffff; margin-bottom: 8px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-    .section-desc { color: var(--muted); font-size: 0.95rem; margin-bottom: 24px; }
-    .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+
+    .hero-content h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.2;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+
+    .headline {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Secciones */
+    section {
+      padding: 50px 0 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 28px;
+    }
+
+    /* Grillas y Tarjetas */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
     .card {
-      background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--card-radius);
-      padding: 24px; transition: all 0.2s ease; text-decoration: none; display: block; color: inherit;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .card:hover { background: var(--card-hover); border-color: var(--border-accent); transform: translateY(-2px); }
-    .card-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; flex-wrap: wrap; gap: 6px; }
-    .card-title { font-size: 1.1rem; font-weight: 600; color: #ffffff; }
-    .card-meta { font-size: 0.8rem; color: var(--primary); font-weight: 500; }
-    .card-text { color: var(--muted); font-size: 0.92rem; margin-bottom: 14px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag { background: var(--primary-dim); color: var(--primary); font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 6px; }
-    .tag.status { background: var(--warn-dim); color: var(--warn); }
-    .timeline { display: flex; flex-direction: column; gap: 24px; }
-    .timeline-item { border-left: 2px solid var(--border-accent); padding-left: 18px; position: relative; }
-    .timeline-item::before {
-      content: ''; position: absolute; left: -6px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--primary);
+
+    .card:hover {
+      border-color: var(--border-dark);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
     }
-    .timeline-role { font-size: 1rem; font-weight: 600; color: #ffffff; }
-    .timeline-org { font-size: 0.88rem; color: var(--primary); margin-bottom: 4px; }
-    .timeline-status { font-size: 0.8rem; color: var(--warn); font-weight: 600; margin-bottom: 4px; }
-    .timeline-desc { font-size: 0.9rem; color: var(--muted); }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .card-meta {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card-text {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    /* Tags / Etiquetas */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 4px;
+    }
+
+    .tag.status {
+      font-style: italic;
+      color: var(--text-main);
+    }
+
+    /* Caja destacada Substack */
     .substack-box {
-      background: linear-gradient(135deg, rgba(23, 32, 51, 0.9), rgba(15, 23, 42, 0.9));
-      border: 1px solid var(--primary-dim); border-left: 4px solid var(--primary);
-      border-radius: var(--card-radius); padding: 24px;
-      display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--text-main);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
     }
+
+    .substack-box strong {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+
+    .substack-box p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
     .btn {
-      display: inline-block; background: var(--primary); color: #090d16; font-weight: 600; font-size: 0.88rem;
-      padding: 10px 18px; border-radius: 8px; text-decoration: none; white-space: nowrap; transition: opacity 0.2s;
+      display: inline-block;
+      background: var(--text-main);
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 0.82rem;
+      padding: 9px 16px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s;
     }
-    .btn:hover { opacity: 0.9; }
-    .contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .btn:hover {
+      background: #374151;
+    }
+
+    /* Trayectoria / Timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .timeline-item {
+      border-left: 1px solid var(--border);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 6px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--text-main);
+    }
+
+    .timeline-role {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .timeline-org {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .timeline-status {
+      font-size: 0.78rem;
+      color: var(--text-subtle);
+      margin-bottom: 6px;
+    }
+
+    .timeline-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* Contacto */
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
     .contact-btn {
-      display: inline-flex; align-items: center; gap: 8px; background: var(--card-bg); border: 1px solid var(--border);
-      color: var(--text); padding: 10px 16px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 8px 14px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: border-color 0.2s, background 0.2s;
     }
-    .contact-btn:hover { border-color: var(--primary); color: var(--primary); }
-    footer { padding-top: 40px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+
+    .contact-btn:hover {
+      border-color: var(--text-main);
+      background: var(--surface);
+    }
+
+    /* Footer */
+    footer {
+      padding-top: 50px;
+      text-align: center;
+      color: var(--text-subtle);
+      font-size: 0.8rem;
+    }
+
     @media (max-width: 640px) {
-      header { flex-direction: column; text-align: center; gap: 20px; }
-      .nav-links { display: none; }
-      .substack-box { flex-direction: column; align-items: flex-start; }
+      header {
+        flex-direction: column;
+        text-align: center;
+        gap: 18px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .substack-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- Navegación -->
   <nav>
     <div class="nav-container">
       <a href="#" class="nav-brand">Matías Sansó</a>
       <ul class="nav-links">
         <li><a href="#sobre-mi">Sobre mí</a></li>
-        <li><a href="#briefs">Briefs & Ensayos</a></li>
+        <li><a href="#articulos">Escritos</a></li>
         <li><a href="#proyectos">Proyectos</a></li>
         <li><a href="#cv">Trayectoria</a></li>
         <li><a href="#contacto">Contacto</a></li>
@@ -128,55 +391,30 @@
   </nav>
 
   <div class="container">
+    
+    <!-- Hero / Presentación -->
     <header id="sobre-mi">
       <img src="foto.png" alt="Matías Sansó" class="profile-img" onerror="this.style.display='none'">
       <div class="hero-content">
         <h1>Matías Sansó</h1>
-        <div class="headline">Historia &bull; Data Analytics &bull; Geopolítica & Recursos Estratégicos</div>
+        <div class="headline">Historia &bull; Data Analytics &bull; Geopolítica & Recursos</div>
         <p class="hero-text">
           Estudiante avanzado de Historia en la UNSJ enfocado en la intersección entre narrativa histórica y rigor cuantitativo[cite: 1, 2]. Especial interés en recursos estratégicos, minería regional, historia económica y geopolítica del espacio exterior[cite: 1, 2].
         </p>
       </div>
     </header>
 
-    <!-- Strategic Briefs y Substack -->
-    <section id="briefs">
-      <h2 class="section-title">Strategic Briefs & Ensayos</h2>
-      <p class="section-desc">Publicaciones y análisis que combinan contextualización histórica con herramientas de datos[cite: 1].</p>
+    <!-- Substack / Ensayos -->
+    <section id="articulos">
+      <h2 class="section-title">Publicaciones & Análisis</h2>
+      <p class="section-desc">Ensayos y análisis que combinan contextualización histórica con herramientas de datos[cite: 1].</p>
 
       <div class="substack-box">
         <div>
-          <strong style="color: #ffffff; font-size: 1.05rem; display: block; margin-bottom: 4px;">Publicaciones en Substack</strong>
-          <p style="color: var(--muted); font-size: 0.9rem;">Análisis sobre historia económica, astropolítica, comercio internacional y recursos[cite: 1, 2].</p>
+          <strong>Newsletter en Substack</strong>
+          <p>Análisis sobre  astropolítica, historia, relaciones internacionales y recursos estratégicos[cite: 1, 2].</p>
         </div>
-        <a href="https://substack.com/@matiassanso" target="_blank" class="btn">Visitar Substack &rarr;</a>
-      </div>
-
-      <div class="grid">
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Evolución del PBG en la Región de Cuyo</span>
-            <span class="card-meta">Brief Ejecutivo</span>
-          </div>
-          <p class="card-text">Análisis de series temporales del Producto Bruto Geográfico en Cuyo, con foco en el impacto de la minería y exportaciones[cite: 1, 2].</p>
-          <div class="tags">
-            <span class="tag">Historia Económica</span>
-            <span class="tag">Series de Tiempo</span>
-            <span class="tag status">En preparación</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">Minerales Críticos y Geopolítica Espacial</span>
-            <span class="card-meta">Ensayo</span>
-          </div>
-          <p class="card-text">Estudio sobre control de recursos estratégicos, marcos regulatorios y proyección de poder en la carrera espacial[cite: 1, 2].</p>
-          <div class="tags">
-            <span class="tag">Astropolítica</span>
-            <span class="tag">Recursos Estratégicos</span>
-            <span class="tag status">En preparación</span>
-          </div>
-        </div>
+        <a href="https://substack.com/@matiassanso" target="_blank" class="btn">Leer en Substack &rarr;</a>
       </div>
     </section>
 
@@ -184,6 +422,7 @@
     <section id="proyectos">
       <h2 class="section-title">Proyectos & Iniciativas</h2>
       <p class="section-desc">Iniciativas aplicadas de Business Intelligence, ciencia de datos y vinculación comunitaria[cite: 1, 2].</p>
+      
       <div class="grid">
         <div class="card">
           <div class="card-header">
@@ -197,6 +436,7 @@
             <span class="tag status">En desarrollo</span>
           </div>
         </div>
+
         <div class="card">
           <div class="card-header">
             <span class="card-title">NASA Space Apps Challenge San Juan</span>
@@ -204,7 +444,7 @@
           </div>
           <p class="card-text">Participación como voluntario en la organización local del hackatón global de innovación de la NASA en las áreas de Medios, RRHH y Comunidad[cite: 2].</p>
           <div class="tags">
-            <span class="tag">Innovación</span>
+            <span class="tag">Recursos Humanos</span>
             <span class="tag">Comunidad</span>
             <span class="tag">Medios</span>
           </div>
@@ -216,6 +456,7 @@
     <section id="cv">
       <h2 class="section-title">Trayectoria & Formación</h2>
       <p class="section-desc">Formación académica de base, certificaciones analíticas y desarrollo profesional[cite: 1, 2].</p>
+      
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-role">Profesorado y Licenciatura en Historia</div>
@@ -223,6 +464,7 @@
           <div class="timeline-status">En curso · Avanzado (4 materias para profesorado / 10 para licenciatura)[cite: 1, 2]</div>
           <p class="timeline-desc">Foco en historia regional, minería, historia económica y relaciones internacionales[cite: 1, 2].</p>
         </div>
+
         <div class="timeline-item">
           <div class="timeline-role">Certificación Profesional en Análisis de Datos</div>
           <div class="timeline-org">Google / Coursera (Beca Fundación Compromiso)</div>
@@ -244,9 +486,11 @@
       </div>
     </section>
 
+    <!-- Footer -->
     <footer>
       <p>&copy; 2026 Matías Sansó</p>
     </footer>
+
   </div>
 </body>
 </html>
