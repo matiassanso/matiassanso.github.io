@@ -27,7 +27,7 @@
     content="https://matiassanso.github.io/membrillo-analytics/logo-membrillo-principal.png"
   >
 
-  <!-- Fuentes de marca -->
+  <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -46,17 +46,21 @@
   <style>
 
     :root {
-      --negro-membrillo: #07080A;
+      /* Colores de marca */
+      --negro-membrillo: #000000;
       --azul-noche: #101C2E;
       --dorado: #C9A14A;
       --hueso: #FCFBF8;
 
+      /* Textos */
       --texto-principal: #FCFBF8;
       --texto-secundario: rgba(252, 251, 248, 0.70);
 
+      /* Bordes */
       --borde: rgba(201, 161, 74, 0.22);
       --borde-suave: rgba(252, 251, 248, 0.08);
     }
+
 
     /* =====================================================
        BASE
@@ -68,11 +72,13 @@
 
     body {
       margin: 0;
+
       background: var(--negro-membrillo);
       color: var(--texto-principal);
 
       font-family: "Jost", sans-serif;
       font-weight: 400;
+
       line-height: 1.55;
     }
 
@@ -85,6 +91,7 @@
       color: var(--negro-membrillo);
     }
 
+
     /* =====================================================
        ACCESIBILIDAD
        ===================================================== */
@@ -93,6 +100,7 @@
       position: absolute;
       left: -9999px;
       top: 1rem;
+
       z-index: 9999;
     }
 
@@ -107,6 +115,7 @@
       border-radius: 4px;
     }
 
+
     /* =====================================================
        NAVEGACIÓN
        ===================================================== */
@@ -114,9 +123,10 @@
     .membrillo-nav {
       position: sticky;
       top: 0;
+
       z-index: 1000;
 
-      background: rgba(7, 8, 10, 0.94);
+      background: rgba(0, 0, 0, 0.94);
 
       border-bottom: 1px solid var(--borde-suave);
 
@@ -139,6 +149,7 @@
 
     .membrillo-nav-brand {
       color: var(--hueso);
+
       text-decoration: none;
 
       font-size: 0.78rem;
@@ -168,6 +179,7 @@
 
     .membrillo-nav-links a {
       color: var(--texto-secundario);
+
       text-decoration: none;
 
       font-size: 0.72rem;
@@ -183,6 +195,7 @@
       color: var(--dorado);
     }
 
+
     /* =====================================================
        CONTENEDOR
        ===================================================== */
@@ -192,6 +205,7 @@
 
       margin: 0 auto;
     }
+
 
     /* =====================================================
        HERO
@@ -238,10 +252,12 @@
       color: var(--hueso);
 
       font-family: "Cormorant", serif;
+
       font-size: clamp(3rem, 7vw, 5.5rem);
       font-weight: 500;
 
       line-height: 0.95;
+
       letter-spacing: -0.025em;
     }
 
@@ -264,6 +280,7 @@
       color: var(--texto-secundario);
 
       font-size: 1.02rem;
+
       line-height: 1.8;
     }
 
@@ -275,6 +292,7 @@
 
       background: var(--dorado);
     }
+
 
     /* =====================================================
        SECCIONES
@@ -310,6 +328,7 @@
       color: var(--hueso);
 
       font-family: "Cormorant", serif;
+
       font-size: clamp(2.4rem, 5vw, 3.8rem);
       font-weight: 500;
 
@@ -324,8 +343,10 @@
       color: var(--texto-secundario);
 
       font-size: 0.96rem;
+
       line-height: 1.7;
     }
+
 
     /* =====================================================
        ESENCIA
@@ -341,6 +362,7 @@
       color: var(--hueso);
 
       font-family: "Cormorant", serif;
+
       font-size: clamp(1.8rem, 4vw, 2.7rem);
       font-weight: 500;
 
@@ -353,20 +375,10 @@
       color: var(--texto-secundario);
 
       font-size: 1rem;
+
       line-height: 1.8;
     }
 
-    .membrillo-signature {
-      display: inline-block;
-
-      margin-top: 2rem;
-
-      color: var(--dorado);
-
-      font-family: "Cormorant", serif;
-      font-size: 1.45rem;
-      font-style: italic;
-    }
 
     /* =====================================================
        PROYECTOS
@@ -406,6 +418,7 @@
       color: var(--hueso);
 
       font-family: "Cormorant", serif;
+
       font-size: clamp(1.8rem, 3vw, 2.5rem);
       font-weight: 600;
 
@@ -432,6 +445,7 @@
       color: var(--texto-secundario);
 
       font-size: 0.98rem;
+
       line-height: 1.75;
     }
 
@@ -501,6 +515,7 @@
       color: var(--negro-membrillo);
     }
 
+
     /* =====================================================
        ÁREAS DE ENFOQUE
        ===================================================== */
@@ -543,6 +558,7 @@
       color: var(--hueso);
 
       font-family: "Cormorant", serif;
+
       font-size: 1.8rem;
       font-weight: 600;
 
@@ -555,8 +571,10 @@
       color: var(--texto-secundario);
 
       font-size: 0.88rem;
+
       line-height: 1.7;
     }
+
 
     /* =====================================================
        CONTACTO
@@ -580,6 +598,7 @@
       color: var(--hueso);
 
       font-family: "Cormorant", serif;
+
       font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 500;
 
@@ -607,6 +626,7 @@
       text-decoration: none;
 
       font-size: 0.7rem;
+
       letter-spacing: 0.1em;
       text-transform: uppercase;
 
@@ -616,6 +636,7 @@
     .membrillo-contact-link:hover {
       color: var(--dorado);
     }
+
 
     /* =====================================================
        FOOTER
@@ -645,6 +666,7 @@
     .membrillo-footer p {
       margin: 0;
     }
+
 
     /* =====================================================
        RESPONSIVE
@@ -700,14 +722,17 @@
 
       .membrillo-contact {
         flex-direction: column;
+
         align-items: flex-start;
       }
 
       .membrillo-footer-inner {
         flex-direction: column;
+
         align-items: flex-start;
       }
     }
+
 
     @media (max-width: 520px) {
 
@@ -812,11 +837,6 @@
 
       <div class="membrillo-container">
 
-        <!--
-          El logo está en:
-          /membrillo-analytics/logo-membrillo-principal.png
-        -->
-
         <img
           src="logo-membrillo-principal.png"
           alt="Membrillo Analytics"
@@ -905,11 +925,6 @@
             en conocimiento que pueda utilizarse para comprender una
             situación y fundamentar una decisión.
           </p>
-
-
-          <span class="membrillo-signature">
-            Hecho con calma.
-          </span>
 
         </div>
 
